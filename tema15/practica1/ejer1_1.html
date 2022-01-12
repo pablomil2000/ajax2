@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="cargaMarcas()">
+    <script src="ejer1_1.js"></script>
+    <form action="#" id="formu">
+        <select name="marca" id="marca" onchange="cargaCoches(this.value)">
+            <option disabled selected>Selecciona... </option>
+        </select>
+        <select name="marca" id="modelo"></select>
+        <p id="modelos"></p>
+
+    </form>
+
+</body>
+
+</html>

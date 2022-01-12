@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="element-to-print">
+        <form action="#" method="post">
+            <div class="datos1">
+                <legend>Datos personales</legend>
+                <br>
+                <label>Nombre</label><input name='nombre' type="text">
+                <label>Apellido1</label><input name='Apellido1' type="text">
+                <label>Apellido2</label><input name='Apellido2' type="text">
+                <br>
+                <br>
+                <label>Pais</label><input name='Pais' type="text">
+                <label>Provincia</label><input name='Provincia' type="text">
+                <br>
+                <br>
+                <label>Poblacion</label><input name='Poblacion' type="text">
+                <label>Codigo Postal</label><input name='Codigo' type="text">
+
+            </div>
+            <div class="contacto">
+                <legend>Informacion de contacto
+                </legend>
+                <br>
+                <label>Numero de Telefono</label><input name='tlf' type="text">
+                <br>
+                <br>
+                <label>Email</label><input name='email' type="text">
+            </div>
+            <div class="mensaje">
+                <legend>Mensaje</legend><textarea name="mensaje" cols="75" rows="20"></textarea>
+            </div>
+
+            <input type="button" name="Submit" value="Validar" onClick="generarpdf(this.form)">
+        </form>
+    </div>
+
+    <script>
+        function generarpdf(f) {
+            campo = f.nombre.value;
+            if (validar_str(campo, 'nombre')) {
+                campo = f.Apellido1.value;
+                if (validar_str(campo, 'Apellido1')) {
+                    campo = f.Apellido2.value;
+                    if (validar_str(campo, 'Apellido2')) {
+                        campo = f.Pais.value;
+                        if (validar_str(campo, 'Pais')) {
+                            campo = f.Provincia.value;
+                            if (validar_str(campo, 'provincia')) {
+                                campo = f.Poblacion.value;
+                                if (validar_str(campo, 'Poblacion')) {
+                                    campo = f.Codigo.value;
+                                    if (validar_num(campo, 'Codigo', 5)) {
+                                        campo = f.tlf.value;
+                                        if (validar_num(campo, 'Telefono', 9)) {
+                                            campo = f.email.value;
+                                            if (validar_email(campo, 'email')) {
+                                                campo = f.mensaje.value;
+                                                if (validar_str(campo, 'mensaje')) {
+                                                    var element = document.getElementById('element-to-print');
+                                                    html2pdf(element);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        function validar_str(campo, nombre) {
+            var expre1 = new RegExp("[a-zA-Z]+");
+            if (campo == '') {
+                alert('Rellena el campo de ' + nombre);
+            } else {
+                if (!expre1.test(campo)) {
+                    alert('Revisa tu ' + nombre);
+                    console.log(nombre)
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+
+        function validar_num(campo, nombre, long) {
+            var expre1 = new RegExp("^[0-9]{" + long + "}$");
+            if (campo == '') {
+                alert('Rellena el campo de ' + nombre);
+            } else {
+                if (!expre1.test(campo)) {
+                    alert('Revisa tu ' + nombre);
+                    console.log(nombre)
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+
+        function validar_email(campo, nombre) {
+            expre1 = new RegExp("^[-_a-zA-Z]+@{1}[-_a-zA-Z]+.[a-zA-Z]+$")
+            if (campo == '') {
+                alert('Rellena el campo de ' + nombre);
+            } else {
+                if (!expre1.test(campo)) {
+                    alert('Revisa tu ' + nombre);
+                    console.log(nombre)
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

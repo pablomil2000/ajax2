@@ -1,0 +1,8 @@
+span {
+    color: red;
+}
+
+span:hover {
+    color: white;
+    background-color: red;
+}

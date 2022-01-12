@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejerc3_1</title>
+</head>
+
+<body>
+
+    <script src="ejerc3_1.js"></script>
+
+    <h1>Vote esta foto</h1>
+    <img src="img/img1.png" alt="">
+    <form action="#" method="post">
+        <p><label>Nombre</label>
+            <input type="text" name="nombre" id="nombre">
+        </p>
+        <p><label>Voto</label>
+            <select name="voto" id="voto">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </p>
+        <p><input type="button" value="Votar" onclick="llamarServidor(this.form)"></p>
+        <p id="mostrar"></p>
+    </form>
+
+</body>
+
+</html>
